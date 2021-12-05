@@ -24,6 +24,10 @@ function setup() {
     poseNet.on('pose', gotPoses);
 }
 
+function modelLoaded() {
+    console.log('PoseNet Is Initialized');
+}
+
 function gotPoses(results) {
     if (results.length > 0) {
         console.log(results);
@@ -40,10 +44,6 @@ function gotPoses(results) {
     }
 }
 
-function modelLoaded() {
-    console.log('PoseNet Is Initialized');
-}
-
 function draw() {
     image(video, 0, 0, 600, 500);
     fill("#FF0000");
@@ -56,7 +56,7 @@ function draw() {
         circle(leftWristX, leftWristY, 20);
 
         song1.stop();
-        if (song1_status == false) {
+        if (song2_status == false) {
             song2.play();
             document.getElementById("song").innerHTML = "Playing : Ranjha";
         }
@@ -65,7 +65,7 @@ function draw() {
         circle(rightWristX, rightWristY, 20);
 
         song2.stop();
-        if (song2_status == false) {
+        if (song1_status == false) {
             song1.play();
             document.getElementById("song").innerHTML = "Playing : Rattan Lambiya";
         }
